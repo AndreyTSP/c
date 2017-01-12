@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include<Windows.h>//в данном случае для поддержки кириллици
+
+using std::vector;
+using std::cin;
+using std::cout;
+using std::string;
+using std::endl;
+using std::getline;
+
+int main()
+{
+	// Поддержка кириллицы в консоли Windows
+	//setlocale(LC_ALL, "");
+	SetConsoleCP(1251);// установка кодовой страницы win-cp 1251 в поток ввода
+	SetConsoleOutputCP(1251);
+	// Создание вектора из строк
+	vector<string> students;
+
+	// Буфер для ввода фамилии студента
+	string buffer = "";
+
+	cout << "Вводите фамилии студентов. "
+		<< "По окончание ввода введите пустую строку" << endl;
+
+	do {
+		getline(cin, buffer);
+		//if (buffer.size() > 0) {
+			// Добавление элемента в конец вектора
+			students.push_back(buffer);
+		//}
+	} while (buffer != "");
+
+
+	// Сохраняем количество элементов вектора 
+	unsigned int vector_size = students.size();
+
+	// Вывод заполненного вектора на экран
+	cout << "Ваш вектор." << endl;
+	for (int i = 0; i < vector_size; i++) {
+		cout << students[i] << endl;
+	}
+	cout<< "Количество элементов вектора : " << vector_size << endl;
+	return 0;
+}
